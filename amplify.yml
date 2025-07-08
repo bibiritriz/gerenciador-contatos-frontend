@@ -8,11 +8,11 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: dist/frontend
+    baseDirectory: dist/frontend/browser
     files:
       - "**/*"
   cache:
     paths:
       - node_modules/**
   runtime-versions:
-    nodejs: 20 
+    nodejs: 20.19.0
