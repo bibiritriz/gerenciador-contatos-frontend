@@ -1,59 +1,58 @@
-# Frontend
+# 💻 Gerenciador de Contatos - Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+## 📌 Visão Geral
 
-## Development server
+Este repositório contém o código-fonte do **frontend** do sistema de gerenciamento de contatos.  
+Desenvolvido com **Angular**, ele é responsável por toda a **interface do usuário**, oferecendo uma experiência fluida, intuitiva e responsiva para o gerenciamento de contatos.
 
-To start a local development server, run:
+O frontend interage com a API RESTful fornecida pelo backend para exibir, adicionar, editar e remover os contatos.
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🎯 Funcionalidades da Interface
 
-## Code scaffolding
+A aplicação possui as seguintes funcionalidades principais:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### ✅ Cadastro Detalhado de Contatos
+- Formulários reativos para adicionar novos contatos com:
+  - Nome, telefones, e-mails
+  - Endereços (com bairro, rua, número, cidade etc.)
+  - Data de nascimento
+  - notas e foto de perfil
 
-```bash
-ng generate component component-name
-```
+### 👁️ Visualização de Contatos
+- Lista de contatos com detalhes visuais
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 🔍 Filtros de Pesquisa
+- Ferramentas para busca por:
+  - Nome
+  - Telefone
+  - E-mail
+  - Categoria
 
-```bash
-ng generate --help
-```
+### 🗂️ Categorização
+- Atribuição de categorias aos contatos
+- Exibição filtrada por categorias (Família, Trabalho, Amigos etc.)
 
-## Building
+### ⭐ Contatos Favoritos
+- Marcar e destacar contatos importantes como favoritos
 
-To build the project run:
+### 📱 Design Responsivo
+- Interface totalmente adaptável para:
+  - 💻 Desktops
+  - 📱 Smartphones
+  - 🧾 Tablets
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🛠️ Tecnologias Utilizadas
 
-## Running unit tests
+O frontend foi desenvolvido com as seguintes tecnologias:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- **Angular CLI 20.0.5** — Framework para SPAs modernas
+- **TypeScript** — Tipagem estática para código mais seguro e legível
+- **HTML5** — Estrutura da interface
+- **CSS3** — Estilização responsiva
+- **Bootstrap** — Layout moderno, responsivo e rápido
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
