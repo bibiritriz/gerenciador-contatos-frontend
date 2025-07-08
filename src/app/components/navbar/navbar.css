@@ -1,0 +1,27 @@
+.search-container {
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+
+}
+
+.search-input:focus+.search-container,
+.search-container:focus-within {
+  box-shadow: 2px 1px 4px 0px #0000001c;
+  /* Azul Bootstrap ou cor de sua preferência */
+}
+
+.menuHover {
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: gainsboro;
+  }
+}

@@ -1,0 +1,40 @@
+img:hover{
+  filter: brightness(0.5);
+  cursor: pointer;
+}
+
+.closeCategory {
+  border: none;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: gainsboro;
+  }
+}
+
+.backArrow {
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: gainsboro;
+  }
+}
+
+a{
+  text-decoration: none;
+}

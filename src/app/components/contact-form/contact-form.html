@@ -1,0 +1,371 @@
+<form
+  [formGroup]="FormGroupContact"
+  class="container-fluid m-auto my-3"
+  style="max-width: 40rem"
+>
+
+  <!-- Cabeçalho -->
+  <div class="row mb-3 align-items-center">
+    <div class="col-6">
+      <a class="text-primary" routerLink="">
+        <i class="bi bi-arrow-left fs-4 backArrow"></i>
+      </a>
+    </div>
+    <div class="col-6 text-end">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+        Save
+      </button>
+    </div>
+  </div>
+
+  <!-- Foto de perfil -->
+  <div class="d-flex justify-content-center mb-3">
+    <div
+      class="position-relative"
+      style="width: 7.5rem; height: 7.5rem"
+    >
+      <img
+        [src]="photoUrl"
+        alt="photo_profile"
+        class="rounded-circle border border-2 shadow-sm w-100 h-100"
+        style="object-fit: cover"
+      />
+      <button
+        type="button"
+        class="btn btn-light border position-absolute bottom-0 end-0 p-1 rounded-circle shadow-sm"
+        style="width: 2rem; height: 2rem"
+        title="Edit photo"
+        (click)="openModalPhoto(modalAddPhoto)"
+      >
+        <i class="bi bi-pencil-fill"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Categorias -->
+  <div class="mb-3">
+    <small class="text-muted fw-bold">Category</small>
+    <div class="d-flex flex-wrap gap-2 mt-2">
+      <div
+        *ngFor="let category of FormGroupContact.get('categories')?.value"
+        class="badge bg-light border text-secondary d-flex align-items-center px-2 py-1 rounded-pill"
+      >
+        {{ category.name }}
+        <i
+          class="bi bi-x ms-2"
+          (click)="removeCategory(category)"
+          style="cursor: pointer"
+        ></i>
+      </div>
+      <i
+        class="bi bi-plus-lg"
+        (click)="openModal(modalAddCategory)"
+        style="cursor: pointer"
+      ></i>
+    </div>
+  </div>
+
+  <!-- Nome e Sobrenome -->
+  <div class="row g-2 mb-3">
+    <div class="col-12 col-md-6">
+      <label class="form-label">Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        placeholder="Name"
+      />
+      <div *ngIf="submitted && name.errors?.['required']" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <label class="form-label">Lastname</label>
+      <input
+        formControlName="lastname"
+        type="text"
+        class="form-control"
+        placeholder="Lastname"
+      />
+    </div>
+  </div>
+
+  <!-- Apelido e Favorito -->
+  <div class="row g-2 mb-3">
+    <div class="col-12 col-md-6">
+      <label class="form-label">Nickname</label>
+      <input
+        formControlName="nickname"
+        type="text"
+        class="form-control"
+        placeholder="Nickname"
+      />
+    </div>
+    <div class="col-12 col-md-6 d-flex align-items-end">
+      <div class="form-check form-switch">
+        <input
+          formControlName="favorite"
+          type="checkbox"
+          class="form-check-input"
+        />
+        <label class="form-check-label">Favorite</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emails -->
+  <div formArrayName="emails" class="mb-3">
+    <label class="form-label">Emails</label>
+    <div
+      *ngFor="let email of emails.controls; let e = index"
+      [formGroupName]="e"
+      class="row g-2 mb-2"
+    >
+      <div class="col-12 col-md-4">
+        <input
+          formControlName="label"
+          class="form-control"
+          placeholder="Label"
+        />
+      </div>
+      <div class="col-10 col-md-7">
+        <input
+          formControlName="address"
+          type="email"
+          class="form-control"
+          placeholder="example@email.com"
+        />
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <i
+          class="bi bi-x ms-2"
+          style="cursor: pointer"
+          (click)="removeEmail(e)"
+        ></i>
+      </div>
+    </div>
+    <br />
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm mt-2"
+      (click)="addEmail()"
+    >
+      + Add Email
+    </button>
+  </div>
+
+  <!-- Telefones -->
+  <div formArrayName="phones" class="mb-3">
+    <label class="form-label">Phones</label>
+    <div
+      *ngFor="let phone of phones.controls; let p = index"
+      [formGroupName]="p"
+      class="row g-2 mb-2"
+    >
+      <div class="col-12 col-md-4">
+        <input
+          formControlName="label"
+          class="form-control"
+          placeholder="Label"
+        />
+      </div>
+      <div class="col-10 col-md-7">
+        <input
+          formControlName="number"
+          type="tel"
+          class="form-control"
+          placeholder="(00) 00000-0000"
+          mask="(00) 00000-0000"
+        />
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <i
+          class="bi bi-x ms-2"
+          style="cursor: pointer"
+          (click)="removePhone(p)"
+        ></i>
+      </div>
+      <div *ngIf="submitted && phones.invalid" class="text-danger">
+        Phone number is required.
+      </div>
+    </div>
+    <br />
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm mt-2"
+      (click)="addPhone()"
+    >
+      + Add Phone
+    </button>
+    <div
+      class="text-danger"
+      *ngIf="submitted && phones.errors?.['minLengthArray']"
+    >
+      Please add at least one phone number.
+    </div>
+  </div>
+
+  <!-- Endereços -->
+  <div formArrayName="addresses" class="mb-3">
+    <label class="form-label">Addresses</label>
+    <div
+      *ngFor="let address of addresses.controls; let a = index"
+      [formGroupName]="a"
+      class="border p-3 rounded mb-3"
+    >
+      <div class="d-flex justify-content-end">
+        <i
+          class="bi bi-x"
+          style="cursor: pointer"
+          (click)="removeAddress(a)"
+        ></i>
+      </div>
+      <input
+        formControlName="country"
+        class="form-control mb-2"
+        placeholder="Country"
+      />
+
+      <div class="row g-2 mb-2">
+        <div class="col-12 col-md-10">
+          <input
+            formControlName="street"
+            class="form-control"
+            placeholder="Street"
+          />
+          <div
+            *ngIf="submitted && address.get('street')?.errors?.['required']"
+            class="text-danger"
+          >
+            Street is required.
+          </div>
+        </div>
+        <div class="col-12 col-md-2">
+          <input
+            formControlName="number"
+            class="form-control"
+            placeholder="Number"
+          />
+          <div
+            *ngIf="submitted && address.get('number')?.errors?.['required']"
+            class="text-danger"
+          >
+            Number is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-2 mb-2">
+        <div class="col-12 col-md-6">
+          <input
+            formControlName="city"
+            class="form-control"
+            placeholder="City"
+          />
+        </div>
+        <div class="col-12 col-md-3">
+          <input
+            formControlName="state"
+            class="form-control"
+            placeholder="State"
+          />
+        </div>
+        <div class="col-12 col-md-3">
+          <input
+            formControlName="zipcode"
+            class="form-control"
+            placeholder="Zip Code"
+            mask="00000-000"
+          />
+        </div>
+      </div>
+
+      <input
+        formControlName="neighborhood"
+        class="form-control mb-2"
+        placeholder="Neighborhood"
+      />
+      <div
+        *ngIf="submitted && address.get('neighborhood')?.errors?.['required']"
+        class="text-danger"
+      >
+        Neighborhood is required.
+      </div>
+
+      <input
+        formControlName="complement"
+        class="form-control mb-2"
+        placeholder="Complement"
+      />
+    </div>
+    <br />
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm"
+      (click)="addAddress()"
+    >
+      + Add Address
+    </button>
+  </div>
+
+  <!-- Aniversário -->
+  <div class="row g-2 mb-3">
+    <div class="col-12 col-md-4">
+      <label class="form-label">Birthday</label>
+      <input formControlName="birthday" type="date" class="form-control" />
+    </div>
+  </div>
+
+  <!-- Notas -->
+  <div class="mb-3">
+    <label class="form-label">Note</label>
+    <textarea formControlName="note" class="form-control" rows="3"></textarea>
+  </div>
+</form>
+
+<ng-template #modalAddCategory let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Add category</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <select
+      class="form-select"
+      [(ngModel)]="selectedCategory"
+      aria-label="Select category"
+    >
+      @for (categorie of categoriesArray; track categorie.id) {
+      <option [ngValue]="categorie" *ngIf="!isCategorySelected(categorie)">
+        {{ categorie.name }}
+      </option>
+      }
+    </select>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modal.close()">Cancel</button>
+
+    <button class="btn btn-primary" (click)="addCategory(modal)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #modalAddPhoto let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Select your photo</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex flex-wrap gap-2">
+      <img
+        *ngFor="let photo of photos"
+        [src]="photo.url"
+        class="rounded border"
+        width="100"
+        height="100"
+        style="cursor: pointer"
+        alt="profile_photo"
+        style="width: 100px; cursor: pointer"
+        (click)="setPhotoProfile(modal, photo)"
+      />
+    </div>
+  </div>
+</ng-template>

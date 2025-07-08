@@ -1,0 +1,28 @@
+<nav class="navbar bg-body-tertiary px-3">
+  <div
+    class="d-flex justify-content-between align-items-center flex-wrap w-100"
+  >
+    <div
+      class="d-flex align-items-center gap-3 flex-shrink-0"
+      style="max-width: 12.75rem"
+    >
+      <i class="bi bi-list fs-3 menuHover" (click)="onToggleSidebar()"></i>
+      <a class="navbar-brand" routerLink="">Contacts</a>
+    </div>
+    <div
+      class="d-flex align-items-center bg-white rounded-3 px-2 py-1 search-container"
+      style="flex: 1 1 100%; max-width: 15rem; justify-content: center"
+    >
+      <i class="bi bi-search text-muted me-2"></i>
+      <input
+        class="form-control border-0 shadow-none p-0 search-input"
+        type="search"
+        placeholder="search"
+        [(ngModel)]="searchTerm"
+        aria-label="search"
+        (input)="onSearch($event)"
+        style="width: 100%; max-width: 20rem"
+      />
+    </div>
+  </div>
+</nav>

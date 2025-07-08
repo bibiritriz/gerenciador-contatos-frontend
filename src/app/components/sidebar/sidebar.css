@@ -1,0 +1,73 @@
+.hover-container {
+  transition: background-color 0.2s;
+
+  /* Quando o mouse está no li, o fundo fica cinza */
+  &:hover {
+    background-color: gainsboro;
+
+    .action {
+      visibility: visible;
+    }
+  }
+
+  /* Se o mouse está sobre .action, o fundo do li volta ao normal */
+  &:has(.action:hover) {
+    background-color: transparent;
+  }
+}
+
+.action {
+  visibility: hidden;
+  display: flex;
+
+  button{
+    border: none;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: gainsboro;
+    }
+  }
+}
+
+.contactShadow:hover{
+  box-shadow: 0.125rem 0.063rem 0.25rem 0px #0000001c;
+}
+ /* Modal customizado para criar marcador */
+.modal-criar-marcador .modal-content {
+   border-radius: 0.5rem;
+   border: none;
+   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+ }
+
+ .modal-criar-marcador .modal-header {
+   border-bottom: 0.063rem solid #e8eaed;
+   padding:1.25rem 1.5rem 2rem;
+ }
+
+ .modal-criar-marcador .modal-title {
+   font-size: 1.125rem;
+   font-weight: 500;
+   color: #202124;
+ }
+
+ .modal-criar-marcador .modal-body {
+   padding: 1rem 1.5rem;
+ }
+
+ .modal-criar-marcador .modal-footer {
+   border-top: 0.063rem solid #e8eaed;
+   padding: 1rem 1.5rem 1.25rem;
+   justify-content: flex-end;
+ }
+
+button{
+  border:none;
+}

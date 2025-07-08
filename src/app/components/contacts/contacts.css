@@ -1,0 +1,33 @@
+/* Oculta os ícones inicialmente */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Estiliza os ícones */
+.actions i {
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.3rem;
+  transition: background-color 0.2s;
+}
+
+.actions i:hover {
+  background-color: lightgray;
+}
+
+/* Hover da linha */
+.contacts-table tbody tr:hover {
+  background-color: #e8f0fe;
+}
+
+/* Remove o fundo quando hover em ícone */
+.contacts-table tbody tr:has(.actions button:hover) {
+  background-color: transparent !important;
+}
+
+/* Ícones aparecem no hover da linha */
+.contacts-table tbody tr:hover .actions {
+  opacity: 1;
+}
