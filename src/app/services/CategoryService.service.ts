@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { iCategory, iDataCategory } from '../models/Category';
+import { iCategory, iDataCategory } from '../models/Category.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'https://beatrizfatecitu.duckdns.org/categories';
+  private apiUrl = 'http://localhost:8080/categories';
 
   constructor(private readonly http: HttpClient) {}
 

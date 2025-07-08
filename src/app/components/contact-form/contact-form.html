@@ -128,7 +128,7 @@
           placeholder="Label"
         />
       </div>
-      <div class="col-10 col-md-7">
+      <div class="col-7 col-md-7">
         <input
           formControlName="address"
           type="email"
@@ -136,7 +136,7 @@
           placeholder="example@email.com"
         />
       </div>
-      <div class="col-2 d-flex align-items-center">
+      <div class="col d-flex align-items-center">
         <i
           class="bi bi-x ms-2"
           style="cursor: pointer"
@@ -169,7 +169,7 @@
           placeholder="Label"
         />
       </div>
-      <div class="col-10 col-md-7">
+      <div class="col-7 col-md-7">
         <input
           formControlName="number"
           type="tel"
@@ -178,7 +178,7 @@
           mask="(00) 00000-0000"
         />
       </div>
-      <div class="col-2 d-flex align-items-center">
+      <div class="col d-flex align-items-center">
         <i
           class="bi bi-x ms-2"
           style="cursor: pointer"
@@ -272,10 +272,11 @@
         </div>
         <div class="col-12 col-md-3">
           <input
-            formControlName="zipcode"
+            formControlName="zipCode"
             class="form-control"
             placeholder="Zip Code"
             mask="00000-000"
+            pattern="[0-9]{5}-?[0-9]{3}"
           />
         </div>
       </div>

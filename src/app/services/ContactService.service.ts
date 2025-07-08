@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { iContact } from '../models/Contact';
+import { iContact } from '../models/Contact.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactService {
-  private apiUrl = 'https://beatrizfatecitu.duckdns.org/contacts'; // ajuste se necessário
+  private apiUrl = 'http://localhost:8080/contacts'; // ajuste se necessário
 
   constructor(private http: HttpClient) {}
 

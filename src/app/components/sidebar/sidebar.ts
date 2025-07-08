@@ -7,11 +7,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CategoryService } from '../../services/CategoryService';
-import { iCategory, iDataCategory } from '../../models/Category';
-import { FilterService } from '../../services/FilterService';
-import { ContactService } from '../../services/ContactService';
-import { iContact } from '../../models/Contact';
+import { CategoryService } from '../../services/CategoryService.service';
+import { iCategory, iDataCategory } from '../../models/Category.model';
+import { FilterService } from '../../services/FilterService.service';
+import { ContactService } from '../../services/ContactService.service';
+import { iContact } from '../../models/Contact.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -56,7 +56,7 @@ export class Sidebar implements OnInit {
     }
   }
 
-  selectFavorites(favorite: boolean){
+  selectFavorites(favorite: boolean) {
     this.filterService.setFavorites(favorite);
   }
 

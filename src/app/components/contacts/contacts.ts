@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../../services/ContactService';
-import { iContact } from '../../models/Contact';
-import { FilterService } from '../../services/FilterService';
+import { ContactService } from '../../services/ContactService.service';
+import { iContact } from '../../models/Contact.model';
+import { FilterService } from '../../services/FilterService.service';
 
 @Component({
   selector: 'app-contacts',

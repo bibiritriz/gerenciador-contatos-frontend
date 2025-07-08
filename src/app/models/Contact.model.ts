@@ -1,8 +1,8 @@
-import { iAddress } from './Address';
-import { iEmail } from './Email';
-import { iPhone } from './Phone';
-import { iCategory } from './Category';
-import { iPhoto } from './Photo';
+import { iAddress } from './Address.model';
+import { iEmail } from './Email.model';
+import { iPhone } from './Phone.model';
+import { iCategory } from './Category.model';
+import { iPhoto } from './Photo.model';
 
 export interface iContact {
   id: number;

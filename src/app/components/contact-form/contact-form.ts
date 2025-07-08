@@ -9,16 +9,15 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { iPhone } from '../../models/Phone';
-import { iEmail } from '../../models/Email';
-import { iAddress } from '../../models/Address';
-import { iCategory } from '../../models/Category';
-import { CategoryService } from '../../services/CategoryService';
-import { ContactService } from '../../services/ContactService';
+import { iPhone } from '../../models/Phone.model';
+import { iEmail } from '../../models/Email.model';
+import { iAddress } from '../../models/Address.model';
+import { iCategory } from '../../models/Category.model';
+import { CategoryService } from '../../services/CategoryService.service';
+import { ContactService } from '../../services/ContactService.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PhotoService } from '../../services/PhotoService';
-import { iPhoto } from '../../models/Photo';
-import { concatAll } from 'rxjs';
+import { PhotoService } from '../../services/PhotoService.service';
+import { iPhoto } from '../../models/Photo.model';
 
 @Component({
   selector: 'app-contact-form',
@@ -79,8 +78,11 @@ export class ContactForm implements OnInit {
 
   minLengthArray(min: number) {
     return (control: AbstractControl): ValidationErrors | null => {
-      const array = control.value as iPhone[];
-      return array && array.length >= min ? null : { minLengthArray: true };
+      if (control instanceof FormArray) {
+        const array = control.value as iPhone[];
+        return array && array.length >= min ? null : { minLengthArray: true };
+      }
+      return null;
     };
   }
 
@@ -239,7 +241,7 @@ export class ContactForm implements OnInit {
         neighborhood: [address?.neighborhood || '', Validators.required],
         street: [address?.street || '', Validators.required],
         number: [address?.number || '', Validators.required],
-        zipcode: [address?.zipCode || ''],
+        zipCode: [address?.zipCode || ''],
         complement: [address?.complement || ''],
       })
     );

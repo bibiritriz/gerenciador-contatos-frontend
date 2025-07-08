@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { iPhoto } from '../models/Photo';
+import { iPhoto } from '../models/Photo.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PhotoService {
-  private apiUrl = 'https://beatrizfatecitu.duckdns.org/photos';
+  private apiUrl = 'http://localhost:8080/photos';
 
   constructor(private readonly http: HttpClient) {}
 
