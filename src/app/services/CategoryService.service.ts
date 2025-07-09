@@ -7,7 +7,7 @@ import { iCategory, iDataCategory } from '../models/Category.model';
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:8080/categories';
+  private apiUrl = 'https://beatrizfatecitu.duckdns.org/categories';
 
   constructor(private readonly http: HttpClient) {}
 
