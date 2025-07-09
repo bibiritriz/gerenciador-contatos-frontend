@@ -7,7 +7,7 @@ import { iContact } from '../models/Contact.model';
   providedIn: 'root',
 })
 export class ContactService {
-  private apiUrl = 'http://localhost:8080/contacts'; // ajuste se necessário
+  private apiUrl = 'https://beatrizfatecitu.duckdns.org/contacts'; 
 
   constructor(private http: HttpClient) {}
 
