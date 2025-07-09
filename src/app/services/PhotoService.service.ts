@@ -7,7 +7,7 @@ import { iPhoto } from '../models/Photo.model';
   providedIn: 'root',
 })
 export class PhotoService {
-  private apiUrl = 'http://localhost:8080/photos';
+  private apiUrl = 'https://beatrizfatecitu.duckdns.org/photos';
 
   constructor(private readonly http: HttpClient) {}
 
